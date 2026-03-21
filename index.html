@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnato — IA para tu negocio</title>
+    <meta name="description" content="Consultoría de IA para emprendedores y negocios que quieren resultados, no teoría. Sesiones prácticas donde montamos tu sistema juntos.">
+    <meta property="og:title" content="Tecnato — IA para tu negocio">
+    <meta property="og:description" content="Consultoría práctica de IA. No vendemos humo. Montamos sistemas que funcionan.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tecnato.ai">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --white: #FAFAF8;
+            --black: #0A0A0A;
+            --red: #8B0000;
+            --red-hover: #A01010;
+            --gray-text: #555550;
+            --gray-light: #DDDDD8;
+            --gray-border: #E8E8E4;
+            --sans: 'DM Sans', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--white);
+            color: var(--black);
+            font-family: var(--sans);
+            font-size: 17px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--red);
+            z-index: 10000;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ---- NAV ---- */
+        nav {
+            position: fixed;
+            top: 2px;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, var(--white) 70%, transparent);
+        }
+
+        .nav-logo {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--black);
+        }
+
+        .nav-logo span {
+            color: var(--red);
+        }
+
+        /* Hamburger button */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            z-index: 200;
+            position: relative;
+        }
+
+        .hamburger-line {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--black);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .hamburger-line:nth-child(1) {
+            margin-bottom: 5px;
+        }
+
+        .hamburger-line:nth-child(2) {
+            margin-bottom: 5px;
+        }
+
+        .hamburger.open .hamburger-line:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.open .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open .hamburger-line:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* Menu overlay */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 90;
+        }
+
+        .menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Slide-in menu */
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            max-width: 80vw;
+            height: 100%;
+            background: var(--white);
+            padding: 6rem 2.5rem 2.5rem;
+            transform: translateX(100%);
+            transition: transform 0.35s ease;
+            z-index: 95;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border-left: 1px solid var(--gray-border);
+        }
+
+        .nav-menu.open {
+            transform: translateX(0);
+        }
+
+        .nav-menu a {
+            font-size: 0.85rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gray-text);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--gray-border);
+            transition: color 0.3s;
+            display: block;
+        }
+
+        .nav-menu a:first-child {
+            border-top: 1px solid var(--gray-border);
+        }
+
+        .nav-menu a:hover {
+            color: var(--black);
+        }
+
+        .nav-menu a.menu-cta {
+            color: var(--red);
+            font-weight: 600;
+            border-bottom: none;
+            margin-top: 1rem;
+        }
+
+        .nav-menu a.menu-cta:hover {
+            color: var(--red-hover);
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8rem 2rem 6rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        h1 {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            color: var(--black);
+            margin-bottom: 2rem;
+        }
+
+        h1 em {
+            font-style: italic;
+            color: var(--red);
+            font-weight: 700;
+        }
+
+        .hero-sub {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--gray-text);
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        /* ---- BUTTONS ---- */
+        .btn-primary {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--red);
+            color: var(--white);
+            font-family: var(--sans);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            border: 2px solid var(--red);
+            cursor: pointer;
+            text-decoration: none;
+            border-radius: 0;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.35s ease, background 0.35s ease, border-radius 0.4s ease, transform 0.2s ease;
+            z-index: 1;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: var(--white);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.45s ease, height 0.45s ease;
+            z-index: -1;
+        }
+
+        .btn-primary:hover {
+            color: var(--red);
+            border-radius: 2rem;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .btn-secondary {
+            font-size: 0.85rem;
+            color: var(--gray-text);
+            padding-bottom: 2px;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .btn-secondary::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--gray-light);
+            transition: background 0.3s, transform 0.3s;
+            transform-origin: left;
+        }
+
+        .btn-secondary:hover {
+            color: var(--red);
+        }
+
+        .btn-secondary:hover::after {
+            background: var(--red);
+            transform: scaleX(1.05);
+        }
+
+        /* ---- DIVIDER ---- */
+        .divider {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .divider hr {
+            border: none;
+            height: 1px;
+            background: var(--gray-border);
+        }
+
+        /* ---- WHAT SECTION ---- */
+        .what {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        h2 {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            color: var(--black);
+        }
+
+        .pain-points {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+
+        .pain-point {
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--gray-border);
+            color: var(--gray-text);
+            font-size: 1rem;
+            line-height: 1.6;
+            transition: border-color 0.3s;
+        }
+
+        .pain-point:hover {
+            border-color: var(--red);
+        }
+
+        .pain-point strong {
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        .what-closing {
+            color: var(--black);
+            font-weight: 500;
+            font-size: 1.1rem;
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        /* ---- HOW SECTION ---- */
+        .how {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .session-card {
+            border: 1px solid var(--gray-border);
+            padding: 3rem;
+            margin-top: 2.5rem;
+            position: relative;
+            transition: box-shadow 0.4s ease;
+        }
+
+        .session-card:hover {
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        .session-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--red);
+        }
+
+        .session-name {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            color: var(--black);
+        }
+
+        .session-meta {
+            font-size: 0.85rem;
+            color: var(--gray-text);
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+        }
+
+        .session-meta span {
+            color: var(--black);
+            font-weight: 700;
+        }
+
+        .session-desc {
+            color: var(--gray-text);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            max-width: 560px;
+        }
+
+        .session-includes-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gray-text);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .session-includes {
+            list-style: none;
+            margin-bottom: 2.5rem;
+        }
+
+        .session-includes li {
+            color: var(--gray-text);
+            padding: 0.5rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .session-includes li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--red);
+            font-weight: 700;
+        }
+
+        /* ---- ABOUT SECTION ---- */
+        .about {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .about-inner {
+            display: flex;
+            gap: 3rem;
+            align-items: flex-start;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-photo {
+            width: 200px;
+            min-width: 200px;
+            border-radius: 4px;
+            filter: grayscale(20%);
+            margin-top: 0.5rem;
+        }
+
+        .about-text {
+            color: var(--gray-text);
+            max-width: 600px;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text strong {
+            color: var(--black);
+            font-weight: 500;
+        }
+
+        /* ---- FINAL CTA ---- */
+        .final-cta {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 6rem 2rem 8rem;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            margin-bottom: 1rem;
+        }
+
+        .final-cta p {
+            color: var(--gray-text);
+            margin-bottom: 2.5rem;
+            font-size: 1.05rem;
+        }
+
+        /* ---- FOOTER ---- */
+        footer {
+            border-top: 1px solid var(--gray-border);
+            padding: 2.5rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-left {
+            font-size: 0.75rem;
+            color: var(--gray-light);
+            letter-spacing: 0.1em;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            font-size: 0.75rem;
+            color: var(--gray-text);
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--red);
+        }
+
+        /* ---- ANIMATIONS ---- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 640px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .hero {
+                padding: 7rem 1.5rem 4rem;
+            }
+
+            .what, .how, .about, .final-cta {
+                padding: 4rem 1.5rem;
+            }
+
+            .session-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .cta-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .about-inner {
+                flex-direction: column-reverse;
+                gap: 2rem;
+            }
+
+            .about-photo {
+                width: 140px;
+                min-width: 140px;
+            }
+
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-logo">TECNATO<span>.</span></div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+    </nav>
+
+    <!-- Menu overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Slide-in menu -->
+    <div class="nav-menu" id="navMenu">
+        <a href="https://substack.com/@tonyvazz" target="_blank" rel="noopener">Newsletter</a>
+        <a href="https://x.com/vazzdice" target="_blank" rel="noopener">X</a>
+        <a href="https://www.youtube.com/@tonyvazz" target="_blank" rel="noopener">YouTube</a>
+        <!-- REPLACE: Cal.com booking link for paid session -->
+        <a href="#BOOKING_LINK" class="menu-cta">Reservar sesión</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-label">Consultoría de IA para negocios.</div>
+        <h1>Tu negocio necesita IA.<br><em>Y lo sabes.</em></h1>
+        <p class="hero-sub">Sesiones prácticas donde montamos tu sistema de inteligencia artificial juntos. Entras con dudas, sales con herramientas funcionando.</p>
+        <div class="cta-group">
+            <!-- REPLACE: Cal.com booking link for free intro call -->
+            <a href="#BOOKING_LINK_FREE" class="btn-primary">Reserva una llamada gratuita</a>
+            <a href="https://substack.com/@tonyvazz" class="btn-secondary" target="_blank" rel="noopener">Lee el newsletter</a>
+        </div>
+    </section>
+
+    <div class="divider"><hr></div>
+
+    <!-- WHAT -->
+    <section class="what fade-in">
+        <h2>Sabes que la IA lo cambia todo.<br>Pero no sabes por dónde empezar.</h2>
+        <div class="pain-points">
+            <div class="pain-point"><strong>Parálisis.</strong> Has visto las herramientas pero no sabes cuáles necesitas ni cómo conectarlas a lo que ya haces.</div>
+            <div class="pain-point"><strong>Frustración.</strong> Probaste ChatGPT un par de veces, los resultados fueron mediocres, y asumiste que la IA no es para ti.</div>
+            <div class="pain-point"><strong>Falta de tiempo.</strong> Tu negocio ya te consume. No tienes 40 horas para experimentar.</div>
+            <div class="pain-point"><strong>Desconfianza.</strong> Cada semana alguien te vende el método definitivo de IA. Ya no sabes a quién creer.</div>
+        </div>
+        <p class="what-closing">El problema no es la tecnología. Es que nadie te ha enseñado a usarla como un sistema.</p>
+    </section>
+
+    <div class="divider"><hr></div>
+
+    <!-- HOW -->
+    <section class="how fade-in">
+        <h2>Una sesión. Resultados reales.</h2>
+
+        <div class="session-card">
+            <div class="session-name">Sesión IA Workflow</div>
+            <div class="session-meta">90 minutos · En vivo · <span>€150</span></div>
+            <p class="session-desc">Una llamada donde analizamos tu flujo de trabajo, identificamos dónde la IA te ahorra más tiempo, y lo implementamos juntos en directo. Nada de teoría: un sistema funcionando.</p>
+            <div class="session-includes-label">Incluido en tu reserva</div>
+            <ul class="session-includes">
+                <li>Cuestionario previo para no perder tiempo en básicos</li>
+                <li>90 minutos de sesión en vivo por videollamada</li>
+                <li>Implementación en directo, no solo recomendaciones</li>
+                <li>Resumen escrito con lo que construimos y próximos pasos</li>
+            </ul>
+            <!-- REPLACE: Cal.com booking link for paid session -->
+            <a href="#BOOKING_LINK" class="btn-primary">Reservar sesión</a>
+        </div>
+    </section>
+
+    <div class="divider"><hr></div>
+
+    <!-- ABOUT -->
+    <section class="about fade-in">
+        <h2>Tony Vazz</h2>
+        <div class="about-inner">
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Más de 7 años liderando marketing en startups tecnológicas. Dos adquisiciones por más de $250 millones en total. Ahora construyo un negocio unipersonal usando IA como único equipo.</p>
+                    <p>Lo que enseño es lo que uso todos los días para producir el trabajo de cinco personas. <strong>Mi consultoría es mi propio caso de estudio.</strong></p>
+                    <p>Cada semana publico en Tecnato las herramientas, los workflows y las estrategias que realmente funcionan. Si quieres ver cómo pienso antes de contratarme, empieza por ahí.</p>
+                </div>
+            </div>
+            <img src="tony-vazz.jpg" alt="Tony Vazz" class="about-photo">
+        </div>
+    </section>
+
+    <div class="divider"><hr></div>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta fade-in">
+        <h2>20 minutos. Sin compromiso.</h2>
+        <p>Hablamos de tu negocio y vemos si tiene sentido trabajar juntos.</p>
+        <!-- REPLACE: Cal.com booking link for free intro call -->
+        <a href="#BOOKING_LINK_FREE" class="btn-primary">Reserva una llamada gratuita</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-left">&copy; 2026 TECNATO</div>
+        <div class="footer-links">
+            <a href="https://substack.com/@tonyvazz" target="_blank" rel="noopener">Newsletter</a>
+            <a href="https://x.com/vazzdice" target="_blank" rel="noopener">X</a>
+            <a href="https://www.youtube.com/@tonyvazz" target="_blank" rel="noopener">YouTube</a>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function toggleMenu() {
+            hamburger.classList.toggle('open');
+            navMenu.classList.toggle('open');
+            menuOverlay.classList.toggle('open');
+            document.body.style.overflow = navMenu.classList.contains('open') ? 'hidden' : '';
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+        menuOverlay.addEventListener('click', toggleMenu);
+
+        // Close menu when clicking a link
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navMenu.classList.contains('open')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
