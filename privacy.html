@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad — Tecnato</title>
+    <meta name="description" content="Política de privacidad de Tecnato. Cómo tratamos tus datos.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --white: #FAFAF8;
+            --black: #0A0A0A;
+            --red: #8B0000;
+            --gray-text: #555550;
+            --gray-light: #DDDDD8;
+            --gray-border: #E8E8E4;
+            --sans: 'DM Sans', -apple-system, sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--white);
+            color: var(--black);
+            font-family: var(--sans);
+            font-size: 17px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--red);
+            z-index: 10000;
+        }
+        a { color: var(--red); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        nav {
+            position: fixed;
+            top: 2px;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, var(--white) 70%, transparent);
+        }
+        .nav-logo {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--black);
+            text-decoration: none;
+        }
+        .nav-logo span { color: var(--red); }
+        .nav-back {
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gray-text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-back:hover { color: var(--black); text-decoration: none; }
+        .content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 8rem 2rem 6rem;
+        }
+        .page-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        h1 {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+        .updated {
+            font-size: 0.85rem;
+            color: var(--gray-text);
+            margin-bottom: 3rem;
+        }
+        h2 {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: 1.15rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+        p {
+            color: var(--gray-text);
+            margin-bottom: 1.25rem;
+            line-height: 1.8;
+        }
+        .content strong { color: var(--black); font-weight: 500; }
+        footer {
+            border-top: 1px solid var(--gray-border);
+            padding: 2.5rem 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .footer-left { font-size: 0.75rem; color: var(--gray-light); letter-spacing: 0.1em; }
+        .footer-links { display: flex; gap: 1.5rem; }
+        .footer-links a {
+            font-size: 0.75rem;
+            color: var(--gray-text);
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: var(--red); }
+        @media (max-width: 640px) {
+            nav { padding: 1rem 1.5rem; }
+            .content { padding: 7rem 1.5rem 4rem; }
+            footer { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="nav-logo">TECNATO<span>.</span></a>
+        <a href="/" class="nav-back">&larr; Volver</a>
+    </nav>
+    <div class="content">
+        <div class="page-label">Legal</div>
+        <h1>Política de Privacidad</h1>
+        <p class="updated">Última actualización: marzo 2026</p>
+        <p>Tecnato es un proyecto unipersonal operado por Tony Vazz. Esta política explica qué datos recopilamos, por qué, y qué hacemos con ellos. Sin letra pequeña.</p>
+        <h2>Qué datos recopilamos</h2>
+        <p><strong>Cuando reservas una llamada o sesión:</strong> tu nombre, email, y las respuestas que proporcionas en el formulario de reserva (Cal.com) o en el cuestionario previo (Typeform). Estos datos los usamos exclusivamente para preparar y realizar la sesión.</p>
+        <p><strong>Cuando pagas una sesión:</strong> el pago se procesa a través de Stripe. Tecnato no almacena ni tiene acceso a los datos de tu tarjeta de crédito. Stripe tiene su propia <a href="https://stripe.com/privacy" target="_blank" rel="noopener">política de privacidad</a>.</p>
+        <p><strong>Cuando te suscribes al newsletter:</strong> tu email se almacena en Substack. Tecnato no mantiene una base de datos de emails separada. Substack tiene su propia <a href="https://substack.com/privacy" target="_blank" rel="noopener">política de privacidad</a>.</p>
+        <p><strong>Cuando visitas esta web:</strong> actualmente no usamos cookies, ni herramientas de analítica, ni píxeles de seguimiento. Si esto cambia en el futuro, actualizaremos esta política.</p>
+        <h2>Servicios de terceros</h2>
+        <p>Tecnato utiliza los siguientes servicios para operar. Cada uno procesa datos bajo sus propias políticas de privacidad: <strong>Cal.com</strong> para reservas. <strong>Stripe</strong> para pagos. <strong>Typeform</strong> para cuestionarios. <strong>Substack</strong> para el newsletter. <strong>Vercel</strong> para alojamiento web. <strong>Google Calendar</strong> para gestión de citas.</p>
+        <h2>Para qué usamos tus datos</h2>
+        <p>Usamos tus datos para una sola cosa: darte el mejor servicio posible. Preparar tu sesión, enviarte información relevante, y contactarte si hay algún cambio en tu reserva.</p>
+        <p>No vendemos tus datos. No los compartimos con terceros más allá de los servicios listados arriba. No enviamos spam. No hacemos marketing automatizado sin tu consentimiento.</p>
+        <h2>Tus derechos (RGPD)</h2>
+        <p>Si resides en la Unión Europea, tienes derecho a acceder, rectificar, eliminar o exportar tus datos personales en cualquier momento. También puedes retirar tu consentimiento y solicitar la limitación del tratamiento.</p>
+        <p>Para ejercer cualquiera de estos derechos, escríbeme a <strong>tony@tecnato.ai</strong> y responderé en un plazo máximo de 30 días.</p>
+        <h2>Retención de datos</h2>
+        <p>Los datos de consultoría se conservan 12 meses desde la última interacción. Los datos de suscripción al newsletter se conservan mientras mantengas tu suscripción. Puedes darte de baja en cualquier momento desde el propio email.</p>
+        <h2>Cambios en esta política</h2>
+        <p>Si modificamos esta política, actualizaremos la fecha en la parte superior. Para cambios significativos, lo comunicaremos a través del newsletter.</p>
+        <h2>Contacto</h2>
+        <p>Para cualquier consulta sobre privacidad: <strong>tony@tecnato.ai</strong></p>
+    </div>
+    <footer>
+        <div class="footer-left">&copy; 2026 TECNATO</div>
+        <div class="footer-links">
+            <a href="/">Inicio</a>
+            <a href="/terms.html">Términos</a>
+        </div>
+    </footer>
+</body>
+</html>
