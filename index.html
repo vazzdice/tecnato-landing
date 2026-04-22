@@ -67,7 +67,7 @@
       "founder": { "@id": "https://tecnato.ai/#tony" },
       "sameAs": [
         "https://x.com/vazzdice",
-        "https://substack.com/@tonyvazz",
+        "https://tonyvazz.substack.com/",
         "https://www.youtube.com/@tonyvazz"
       ],
       "hasOfferCatalog": {
@@ -108,7 +108,7 @@
       "worksFor": { "@id": "https://tecnato.ai/#service" },
       "sameAs": [
         "https://x.com/vazzdice",
-        "https://substack.com/@tonyvazz",
+        "https://tonyvazz.substack.com/",
         "https://www.youtube.com/@tonyvazz",
         "https://www.linkedin.com/in/tonyvazz",
         "https://tonyvazz.com/"
@@ -741,6 +741,28 @@
                 text-align: center;
             }
         }
+       .header-link {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.15s ease;
+        }
+
+        .header-link:hover {
+            border-bottom-color: var(--red);
+        }
+
+        .inline-link {
+            color: var(--red);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+            transition: color 0.15s ease;
+        }
+
+        .inline-link:hover {
+            color: var(--red-hover);
+        }
     </style>
 </head>
 <body>
@@ -760,7 +782,7 @@
 
     <!-- Slide-in menu -->
     <div class="nav-menu" id="navMenu">
-        <a href="https://substack.com/@tonyvazz" target="_blank" rel="noopener">Newsletter</a>
+        <a href="https://tonyvazz.substack.com/" target="_blank" rel="noopener">Newsletter</a>
         <a href="https://x.com/vazzdice" target="_blank" rel="noopener">X</a>
         <a href="https://www.youtube.com/@tonyvazz" target="_blank" rel="noopener">YouTube</a>
         <!-- REPLACE: Cal.com booking link for paid session -->
@@ -774,7 +796,7 @@
         <div class="cta-group">
             <!-- REPLACE: Cal.com booking link for free intro call -->
             <a href="https://cal.com/tonyvazz/intro" class="btn-primary">Reserva una llamada gratuita</a>
-            <a href="https://substack.com/@tonyvazz" class="btn-secondary" target="_blank" rel="noopener">Lee el newsletter</a>
+            <a href="https://tonyvazz.substack.com/" class="btn-secondary" target="_blank" rel="noopener">Lee el newsletter</a>
         </div>
     </section>
 
@@ -818,13 +840,13 @@
 
     <!-- ABOUT -->
     <section class="about fade-in">
-        <h2>Tony Vazz</h2>
+        <h2><a href="https://tonyvazz.com/" class="header-link">Tony Vazz</a></h2>
         <div class="about-inner">
             <div class="about-content">
                 <div class="about-text">
                     <p>Más de 7 años liderando marketing en startups tecnológicas. Dos adquisiciones por más de $250 millones en total. Ahora construyo un negocio unipersonal usando IA como único equipo.</p>
                     <p>Lo que enseño es lo que uso todos los días para producir el trabajo de cinco personas. <strong>Mi consultoría es mi propio caso de estudio.</strong></p>
-                    <p>Cada semana publico en Tecnato las herramientas, los workflows y las estrategias que realmente funcionan. Si quieres ver cómo pienso antes de contratarme, empieza por ahí.</p>
+                    <p>Cada semana publico en <a href="https://tonyvazz.substack.com/" class="inline-link">Tecnato</a> las herramientas, los workflows y las estrategias que realmente funcionan. Si quieres ver cómo pienso antes de contratarme, empieza por ahí.</p>
                 </div>
             </div>
             <img src="tony-vazz.jpg" alt="Tony Vazz" class="about-photo">
@@ -845,7 +867,7 @@
     <footer>
         <div class="footer-left">&copy; 2026 TECNATO</div>
         <div class="footer-links">
-            <a href="https://substack.com/@tonyvazz" target="_blank" rel="noopener">Newsletter</a>
+            <a href="https://tonyvazz.substack.com/" target="_blank" rel="noopener">Newsletter</a>
             <a href="https://x.com/vazzdice" target="_blank" rel="noopener">X</a>
             <a href="https://www.youtube.com/@tonyvazz" target="_blank" rel="noopener">YouTube</a>
             <a href="/privacy.html">Privacidad</a>
